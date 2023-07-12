@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "greycliff";
+  src: url(../font/GreycliffCF-Regular.ttf);
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: #000000;
+  box-sizing: border-box;
+  font-family: greycliff;
+}
+
+.navBar {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 50px;
+  color: #fff;
+  height: 15%;
+  width: 100%;
+  display: flex;
+}
+.navBar .logo {
+  height: 100%;
+}
+.navBar .logo img {
+  height: 100%;
+}
+.navBar .navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  padding-right: 40px;
+}
+.navBar .navigation .navigationLinks ul {
+  list-style-type: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+.navBar .navigation .navigationLinks ul div {
+  color: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.navBar .navigation .navigationLinks ul div:hover {
+  background: #332E30;
+}
+
+.mainBody {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mainBody .slider {
+  margin-top: 50px;
+  width: 600px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mainBody .slider .slides {
+  width: 500%;
+  height: 300px;
+  display: flex;
+}
+.mainBody .slider .slides input {
+  display: none;
+}
+.mainBody .slider .slides #radio1:checked ~ .first {
+  margin-left: 0;
+}
+.mainBody .slider .slides #radio2:checked ~ .first {
+  margin-left: -20%;
+}
+.mainBody .slider .slides #radio3:checked ~ .first {
+  margin-left: -40%;
+}
+.mainBody .slider .slides #radio4:checked ~ .first {
+  margin-left: -60%;
+}
+.mainBody .slider .slide {
+  width: 20%;
+  transition: 2s;
+}
+.mainBody .slider .slide img {
+  width: 600px;
+  height: 300px;
+}
+.mainBody .slider .slideManualNav {
+  position: absolute;
+  width: 600px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+.mainBody .slider .slideManualNav .manualBtn {
+  border: 2px solid #1e75d6;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.mainBody .slider .slideManualNav .manualBtn:not(:last-child) {
+  margin-right: 40px;
+}
+.mainBody .slider .slideManualNav .manualBtn:hover {
+  background: #1e75d6;
+}
+
+.slideAutoNav {
+  position: absolute;
+  display: flex;
+  width: 600px;
+  justify-content: center;
+  margin-top: 260px;
+}
+.slideAutoNav div {
+  border: 2px solid #1e75d6;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+.slideAutoNav div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .slideAutoNav .autoBtn1 {
+  background: #1e75d6;
+}
+
+#radio2:checked ~ .slideAutoNav .autoBtn2 {
+  background: #1e75d6;
+}
+
+#radio3:checked ~ .slideAutoNav .autoBtn3 {
+  background: #1e75d6;
+}
+
+#radio4:checked ~ .slideAutoNav .autoBtn4 {
+  background: #1e75d6;
+}/*# sourceMappingURL=index.css.map */

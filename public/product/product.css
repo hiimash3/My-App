@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "greycliff";
+  src: url(../font/GreycliffCF-Regular.ttf);
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: #000000;
+  color: #fff;
+  box-sizing: border-box;
+  font-family: greycliff;
+}
+
+.navBar {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 50px;
+  color: #fff;
+  height: 15%;
+  width: 100%;
+  display: flex;
+}
+.navBar .logo {
+  height: 100%;
+}
+.navBar .logo img {
+  height: 100%;
+}
+.navBar .navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  padding-right: 40px;
+}
+.navBar .navigation .navigationLinks ul {
+  list-style-type: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+.navBar .navigation .navigationLinks ul div {
+  color: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.navBar .navigation .navigationLinks ul div:hover {
+  background: #332E30;
+}
+
+.sProduct {
+  padding: 50px;
+  height: 80%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.sProduct div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.sProduct div img {
+  height: 100%;
+}
+
+.productInformation {
+  display: flex;
+  flex-direction: column;
+}
+.productInformation div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.productInformation .buyButtonDiv {
+  justify-content: end;
+  align-items: center;
+}
+.productInformation .buyButtonDiv .buyButton {
+  width: 200px;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #1e75d6;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.productInformation .buyButtonDiv .buyButton span {
+  background: #1e75d6;
+  height: 100%;
+  width: 0%;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+.productInformation .buyButtonDiv .buyButton:hover {
+  border-color: #000000;
+}
+.productInformation .buyButtonDiv .buyButton:hover span {
+  width: 100%;
+}
+.productInformation h1 {
+  margin: 0;
+}/*# sourceMappingURL=product.css.map */

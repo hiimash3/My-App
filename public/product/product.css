@@ -68,8 +68,17 @@ html body {
   width: 100%;
   display: flex;
 }
-.sProduct div img {
+.sProduct div .productImage {
   height: 100%;
+  width: 50%;
+}
+.sProduct div .productImage img {
+  height: 70%;
+  width: 70%;
+}
+.sProduct div .productInformation {
+  height: 100%;
+  width: 50%;
 }
 
 .productInformation {

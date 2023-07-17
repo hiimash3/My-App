@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Computers | Sign In</title>
+    <link rel="stylesheet" href="/signin/index.css" />
+    <link rel="icon" href="/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="mainDiv">
+      <div class="leftDiv">
+        <h1>Sign In</h1>
+        <form id="loginForm" class="signInForm" action="">
+          <input class="inputLooks" placeholder="Username" type="text" id="username" />
+          <input class="inputLooks" placeholder="Password" type="password" id="password" />
+          <label id="loginFailedL" class="warning" for="password">Login failed. Wrong username or password</label>
+          <input type="submit" value="Sign In" />
+        </form>
+        <p>Dont have an account? <a href="http://localhost:8080/signup">Sign Up</a></p>
+      </div>
+      <div class="rightDiv">
+        <img src="/images/frontpage.png" alt="" />
+      </div>
+    </div>
+
+    <script src="/signin/signin.js"></script>
+  </body>
+</html>

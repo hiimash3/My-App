@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Computers | Edit Profile</title>
+    <link rel="stylesheet" href="/editprofile/index.css" />
+    <link rel="icon" href="/images/favicon.ico" />
+  </head>
+  <body>
+    <div id="navBar" class="navBar">
+      <div class="logo"><img src="/images/logo.png" alt="" /></div>
+      <div class="navigation">
+        <div class="navigationLinks">
+          <ul>
+            <li id="home"><div>Home</div></li>
+            <li id="categoryComputers"><div>Computers</div></li>
+            <li id="categoryMonitors"><div>Monitors</div></li>
+            <li id="categoryKeyboards"><div>Keyboards</div></li>
+            <li id="categoryMouses"><div>Mouses</div></li>
+            <li id="categoryHeadphones"><div>Headphones</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mainDiv">
+      <div class="leftDiv">
+        <div class="profileName">
+          <h1 id="usersName"></h1>
+          <p>Here you can change your information and add optional information to help you out with shopping.</p>
+        </div>
+      </div>
+      <div class="rightDiv">
+        <form action="">
+          <label for="username">Change Username</label>
+          <input id="username" class="inputLooks" type="text" placeholder="Change Username" />
+          <label id="cUsernameL" class="warning" for="username">Username is already taken</label>
+          <div>
+            <label for="name"
+              >Name <br />
+              <input id="name" type="text" placeholder="Name"
+            /></label>
+            <label for="surname"
+              >Surname <br />
+              <input id="surname" type="text" placeholder="Surname" />
+            </label>
+          </div>
+          <label for="password">Password</label>
+          <input id="password" class="inputLooks" type="password" placeholder="Password" />
+          <label id="cPasswordL" class="warning" for="password">Must type password</label>
+          <label id="cPasswordLMatch" class="warning" for="password">Password doesn't match</label>
+          <label for="newPassword">New Password</label>
+          <input id="newPassword" class="inputLooks" type="password" placeholder="New Password" />
+          <label for="email">E-Mail</label>
+          <input id="email" class="inputLooks" type="email" placeholder="Email" />
+          <label for="phone">Phone Number</label>
+          <input class="inputLooks" id="phone" type="number" placeholder="Phone Number" />
+          <label for="post">Postal Code</label>
+          <input id="post" class="inputLooks" type="number" placeholder="Postal Code" />
+          <label for="homeAddress">Home Adress</label>
+          <input id="homeAddress" class="inputLooks" type="text" placeholder="Adress" />
+          <input class="inputLooksSubmit" type="submit" />
+        </form>
+      </div>
+    </div>
+
+    <script src="/editprofile/editprofile.js"></script>
+  </body>
+</html>

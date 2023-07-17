@@ -11,7 +11,30 @@
     <div class="navBar">
       <div class="logo"><img src="/images/logo.png" alt="" /></div>
       <div class="navigation">
-        <div class="profileBar">I AM PROFILE</div>
+        <div id="profileBar" class="profileBar">
+          <div>
+            <p id="profileName">Sign In</p>
+          </div>
+        </div>
+        <div id="profileTab" class="subMenuWrap">
+          <div class="subMenu">
+            <div class="userInfo">
+              <h3 id="userName"></h3>
+            </div>
+            <hr />
+
+            <a href="" class="subMenuLink" id="editProfileLink">
+              <img src="/images/edit.png" alt="" />
+              <p>Edit Profile</p>
+              <span>></span>
+            </a>
+            <a href="" class="subMenuLink" id="logoutLink">
+              <img src="/images/logout.png" alt="" />
+              <p>Log Out</p>
+              <span>></span>
+            </a>
+          </div>
+        </div>
         <div class="navigationLinks">
           <ul>
             <li id="home"><div>Home</div></li>
@@ -36,7 +59,7 @@
             <p id="productDescription"></p>
           </div>
           <div class="buyButtonDiv">
-            <button class="buyButton"><span></span>Add To Cart</button>
+            <button id="buyButton" class="buyButton"><span></span>Purchase</button>
           </div>
         </div>
       </div>

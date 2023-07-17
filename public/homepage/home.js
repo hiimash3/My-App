@@ -1,9 +1,41 @@
 const baseUrl = "http://localhost:8080";
+const token = sessionStorage.getItem("token");
 
 //sticky navBar
 window.addEventListener("scroll", () => {
   const navBar = document.getElementById("navBar");
   navBar.classList.toggle("sticky", window.scrollY > 0);
+  const profileTab = document.getElementById("profileTab");
+  profileTab.classList.remove("openMenu", window.scrollY > 0);
+});
+
+//Click to get dropdown profile
+const profileBar = document.getElementById("profileBar");
+profileBar.addEventListener("click", () => {
+  if (token) {
+    const profileTab = document.getElementById("profileTab");
+    profileTab.classList.toggle("openMenu");
+  } else {
+    location.href = `${baseUrl}/signin`;
+  }
+});
+//Edit profile
+const editProfileLink = document.getElementById("editProfileLink");
+editProfileLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.href = `${baseUrl}/edituser`;
+});
+
+//Log out
+const logout = () => {
+  sessionStorage.removeItem("token");
+  location.reload();
+};
+
+const logoutLink = document.getElementById("logoutLink");
+logoutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  logout();
 });
 
 //Slider counter
@@ -29,6 +61,7 @@ const loadPage = (page, pageSize, category) => {
     headers: {
       "Content-Type": "application/json",
     },
+    Authorization: `Bearer ${token}`,
   };
   const promise = fetch(adress, request);
   promise
@@ -51,7 +84,7 @@ const addProductsToBody = (products) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("sProductDiv");
     productDiv.addEventListener("click", () => {
-      location.href = `http://localhost:8080/item?productId=${product.productid}`;
+      location.href = `${baseUrl}/item?productId=${product.productid}`;
     });
     const description = document.createElement("div");
     description.classList.add("description");
@@ -123,31 +156,61 @@ function createPagination(totalPageNumber) {
 const selectCategory = () => {
   const home = document.getElementById("home");
   home.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=all";
+    location.href = `${baseUrl}/home?category=all`;
   });
   const categoryComputers = document.getElementById("categoryComputers");
   categoryComputers.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=PC";
+    location.href = `${baseUrl}/home?category=PC`;
   });
   const categoryMonitors = document.getElementById("categoryMonitors");
   categoryMonitors.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=Monitor";
+    location.href = `${baseUrl}/home?category=Monitor`;
   });
   const categoryKeyboards = document.getElementById("categoryKeyboards");
   categoryKeyboards.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=Keyboard";
+    location.href = `${baseUrl}/home?category=Keyboard`;
   });
   const categoryMouses = document.getElementById("categoryMouses");
   categoryMouses.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=Mouse";
+    location.href = `${baseUrl}/home?category=Mouse`;
   });
   const categoryHeadphones = document.getElementById("categoryHeadphones");
   categoryHeadphones.addEventListener("click", () => {
-    location.href = "http://localhost:8080/home?category=Headphones";
+    location.href = `${baseUrl}/home?category=Headphones`;
   });
 };
 const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get("category");
-console.log("Selected category:", category);
 
+const loadProfileTab = () => {
+  if (token) {
+    const address = `${baseUrl}/api/getUsername`;
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    fetch(address, request)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const username = data.username;
+        document.getElementById("profileName").innerHTML = username;
+        document.getElementById("userName").innerHTML = "User: " + username;
+      })
+      .catch((error) => console.log(error));
+  } else {
+    document.getElementById("profileName").innerHTML = "Sign In";
+    document.getElementById("userName").innerHTML = "Sign In";
+  }
+};
+
+loadProfileTab();
 loadPage(1, 16, category);

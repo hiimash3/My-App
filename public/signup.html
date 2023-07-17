@@ -12,17 +12,20 @@
       <div class="leftDiv">
         <h1>Sign Up</h1>
         <form class="signUpForm" action="">
-          <input class="inputLooks" placeholder="Username" type="text" />
-          <input class="inputLooks" placeholder="Name" type="text" />
-          <input class="inputLooks" placeholder="Surname" type="text" />
-          <input class="inputLooks" placeholder="Password" type="password" name="" id="" />
-          <input class="inputLooks" placeholder="Repeat Password" type="password" name="" id="" />
-          <input class="inputLooks" placeholder="E-mail" type="email" name="" id="" />
+          <input id="username" class="inputLooks" placeholder="Username" type="text" maxlength="25" required />
+          <label id="cUsernameL" class="warning" for="username">Username is already taken</label>
+          <input id="name" class="inputLooks" placeholder="Name" type="text" required />
+          <input id="surname" class="inputLooks" placeholder="Surname" type="text" required />
+          <input id="password" class="inputLooks" placeholder="Password" type="password" required />
+          <input id="cPassword" class="inputLooks" placeholder="Repeat Password" type="password" minlength="8" required />
+          <label id="cPasswordL" class="warning" for="cPassword">Password doesn't match</label>
+          <input id="email" class="inputLooks" placeholder="E-mail" type="email" required />
           <input type="submit" value="Sign Up" />
         </form>
+        <p>Already have an account? <a href="http://localhost:8080/signin">Sign In</a></p>
       </div>
       <div class="rightDiv">
-        <img src="/images/frontpage.png" alt="">
+        <img src="/images/frontpage.png" alt="" />
       </div>
     </div>
 

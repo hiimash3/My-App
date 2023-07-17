@@ -1,6 +1,5 @@
 const baseUrl = "http://procomputers:8080";
-
-const signInButton = document.getElementById("signIn");
+const token = sessionStorage.getItem("token");
 
 //NAVIGATION BAR
 window.addEventListener("scroll", () => {
@@ -13,13 +12,22 @@ window.addEventListener("scroll", () => {
 //LOGIN AS GUEST BUTTON
 const guestButton = document.getElementById("guest");
 guestButton.addEventListener("click", () => {
+  sessionStorage.removeItem("token");
   location.href = "http://localhost:8080/home?category=all";
 });
+
 //SignUp BUTTON
 const signUpButton = document.getElementById("signUp");
 signUpButton.addEventListener("click", () => {
   location.href = "http://localhost:8080/signup";
 });
+
+//SignIn BUTTON
+const signInButton = document.getElementById("signIn");
+signInButton.addEventListener("click", () => {
+  location.href = "http://localhost:8080/signin";
+});
+
 //FADE IN ELEMENTS
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

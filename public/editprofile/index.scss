@@ -1,0 +1,158 @@
+@import "../welcomepage/variables";
+@font-face {
+  font-family: "greycliff";
+  src: url(../font/GreycliffCF-Regular.ttf);
+}
+html {
+  height: 100%;
+  width: 100%;
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: $fPBackgroundC;
+    box-sizing: border-box;
+    font-family: greycliff;
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.navBar {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 50px;
+  color: $fPTextColor;
+  height: 10%;
+  width: 100%;
+  display: flex;
+
+  .logo {
+    height: 100%;
+    img {
+      height: 100%;
+    }
+  }
+  .navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    padding-right: 40px;
+    .navigationLinks {
+      ul {
+        list-style-type: none;
+        text-transform: uppercase;
+        display: flex;
+        gap: 20px;
+        cursor: pointer;
+        div {
+          color: $fPTextColor;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+
+          &:hover {
+            background: $hoverGray;
+          }
+        }
+      }
+    }
+  }
+}
+.mainDiv {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 90%;
+  .leftDiv {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    .profileName {
+      box-sizing: border-box;
+      padding-left: 80px;
+      padding-right: 30px;
+      height: 100%;
+      width: 100%;
+      color: $fPTextColor;
+      h1{
+        font-size: 70px;
+        font-weight: bold;
+      }
+    }
+  }
+  .rightDiv {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+    .inputLooksSubmit {
+      background-color: $buttonBlue;
+      font-family: greycliff;
+      font-weight: 600;
+      width: 20%;
+      cursor: auto;
+      border-radius: 10px;
+      border: none;
+      color: $fPBackgroundC;
+      padding: 12px 32px;
+      text-decoration: none;
+      margin: 10px 2px;
+      align-self: center;
+    }
+    .inputLooks {
+      background-color: $fPTextColor;
+      width: 80%;
+      cursor: auto;
+      border-radius: 10px;
+      border: none;
+      color: $fPBackgroundC;
+      padding: 12px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .warning {
+        display: none;
+        color: red;
+        margin: 0;
+        padding: 0;
+        align-self: center;
+      }
+
+      label {
+        font-family: greycliff;
+        color: $fPTextColor;
+      }
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        justify-content: space-between;
+        input {
+          background-color: $fPTextColor;
+          border-radius: 10px;
+          border: none;
+          color: $fPBackgroundC;
+          padding: 12px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

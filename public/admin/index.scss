@@ -1,0 +1,63 @@
+@import "../welcomepage/variables";
+@font-face {
+  font-family: "greycliff";
+  src: url(../font/GreycliffCF-Regular.ttf);
+}
+html {
+  height: 100%;
+  width: 100%;
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: $fPBackgroundC;
+    color: $fPTextColor;
+    box-sizing: border-box;
+    font-family: greycliff;
+    padding: 0 100px;
+  }
+}
+.editButton {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+  color: $fPTextColor;
+  background: $buttonBlue;
+}
+.styledTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+table,
+th,
+td {
+  border: 1px solid;
+  padding: 10px;
+}
+.pagination {
+  border-collapse: collapse;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+
+  a {
+    background: $buttonBlue;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    margin: 0 4px;
+    &:active {
+      background-color: $buttonBlue;
+      color: white;
+      border: 1px solid $buttonBlue;
+    }
+  }
+}

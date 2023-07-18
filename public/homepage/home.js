@@ -1,6 +1,16 @@
 const baseUrl = "http://localhost:8080";
 const token = sessionStorage.getItem("token");
+const isAdmin = sessionStorage.getItem("isAdmin");
+const adminButton = document.getElementById("adminButton");
 
+if (isAdmin === "1") {
+  adminButton.classList.remove("hide"); // Show the button
+  adminButton.addEventListener("click", () => {
+    location.href = `${baseUrl}/admin`;
+  });
+} else if (isAdmin === "false") {
+  adminButton.classList.add("hide"); // Hide the button
+}
 //sticky navBar
 window.addEventListener("scroll", () => {
   const navBar = document.getElementById("navBar");
@@ -29,6 +39,7 @@ editProfileLink.addEventListener("click", (event) => {
 //Log out
 const logout = () => {
   sessionStorage.removeItem("token");
+  sessionStorage.removeItem("isAdmin");
   location.reload();
 };
 
@@ -52,7 +63,7 @@ setInterval(() => {
 
 const loadPage = (page, pageSize, category) => {
   //Used to remove the # that the pagination adds to go to the top of the page
-  category = category.replace(/#+$/, "");
+  category = category || "all";
 
   //Sends the data to a link thats connected to the DB
   const adress = `${baseUrl}/api/product?page=${page}&pageSize=${pageSize}&category=${category}`;

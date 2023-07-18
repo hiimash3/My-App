@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="/editproduct/index.css" />
+    <link rel="icon" href="/images/favicon.ico" />
+  </head>
+  <body>
+    <h1 id="editProductName"></h1>
+    <form id="editProductForm" action="">
+      <label for="productName">
+        Product Name
+        <input class="inputLooks" id="productName" type="text" maxlength="25" />
+      </label>
+      <label for="description">
+        Description
+        <textarea itemid="inputLooks description" name="" id="description" cols="10" rows="5"></textarea>
+      </label>
+      <label for="price">
+        Price
+        <input class="inputLooks" id="price" type="number"
+      /></label>
+      <label for="productImage">
+        Product image
+        <input class="inputLooks" id="productImage" type="text" />
+      </label>
+      <label for="type">
+        Type
+        <select class="selection" name="" id="type">
+          <option value="PC">PC</option>
+          <option value="Monitor">Monitor</option>
+          <option value="Keyboard">Keyboard</option>
+          <option value="Mouse">Mouse</option>
+          <option value="Headphones">Headphones</option>
+        </select>
+      </label>
+      <input class="submit inputLooks" type="submit" />
+    </form>
+    <script src="/editproduct/edit.js"></script>
+  </body>
+</html>

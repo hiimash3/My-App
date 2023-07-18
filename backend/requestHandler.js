@@ -87,22 +87,29 @@ const logIn = async (req, res) => {
   try {
     const connection = await connectToDatabase();
     const { username, password } = req.body;
-    const sqlSelectUser = "SELECT password FROM users WHERE username = ?";
+    const sqlSelectUser = "SELECT password, admin FROM users WHERE username = ?";
     const [results] = await connection.execute(sqlSelectUser, [username]);
-    const hashedPassword = results[0]?.password;
+    const user = results[0];
 
+    if (!user) {
+      res.status(401).json({ message: "Invalid credentials" });
+      return;
+    }
+
+    const hashedPassword = user.password;
     const passwordMatch = await bcrypt.compare(password, hashedPassword);
 
     if (passwordMatch) {
-      // Passwords match user is authenticated
+      // Passwords match, user is authenticated
       const token = jwt.sign({ username }, "your-secret-key");
-      res.status(200).json({ token });
+      const isAdmin = user.admin || false; // Check if the user is an admin
+      res.status(200).json({ token, isAdmin });
     } else {
-      // Passwords do not match authentication failed
+      // Passwords do not match, authentication failed
       res.status(401).json({ message: "Invalid credentials" });
     }
   } catch (error) {
-    res.status(500).json({ message: `error at logIn ${error}` });
+    res.status(500).json({ message: `Error at logIn: ${error}` });
   }
 };
 
@@ -216,5 +223,33 @@ const updateUser = async (req, res) => {
     res.status(500).json({ error: `Failed to update user data: ${error}` });
   }
 };
+//Update product as admin
+const updateProduct = async (req, res) => {
+  try {
+    const connection = await connectToDatabase();
+    const { productId, productName, description, price, productImage, type } = req.body;
 
-module.exports = { registerNewUser, fetchProductPage, getSingleProduct, getUsers, logIn, getUsername, updateUser };
+    const sqlUpdateProduct = `UPDATE products SET productname=?, description=?, price=?, productimg=?, type=? WHERE productid=?`;
+    await connection.execute(sqlUpdateProduct, [productName, description, price, productImage, type, productId]);
+
+    res.status(200).json({ message: "Product updated successfully" });
+  } catch (error) {
+    res.status(500).json({ error: `Failed to update product: ${error}` });
+  }
+};
+//Order
+const createOrder = async (req, res) => {
+  try {
+    const connection = await connectToDatabase();
+    const { productId, userFullName, address, postalCode } = req.body;
+
+    const sqlInsertOrder = "INSERT INTO orders (productid, userfullname, address, postalcode) VALUES (?, ?, ?, ?)";
+    await connection.execute(sqlInsertOrder, [productId, userFullName, address, postalCode]);
+
+    res.status(200).json({ message: "Order successfull." });
+  } catch (error) {
+    res.status(500).json({ error: `Failed to add order: ${error}` });
+  }
+};
+
+module.exports = { registerNewUser, fetchProductPage, getSingleProduct, getUsers, logIn, getUsername, updateUser, updateProduct, createOrder };

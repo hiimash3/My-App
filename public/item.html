@@ -8,6 +8,15 @@
     <link rel="icon" href="/images/favicon.ico" />
   </head>
   <body>
+    <div id="orderDiv" class="orderDiv hide">
+      <form id="orderForm" action="">
+        <label for="fullName">Full Name<input class="inputLooks" id="fullName" type="text" placeholder="Full Name" required /></label>
+        <label for="address">Address<input class="inputLooks" id="address" type="text" placeholder="Address" required /></label>
+        <label for="post">Post Code<input class="inputLooks" id="post" type="number" placeholder="Post Code" required /></label>
+        <input class="inputLooks submit" type="submit" />
+      </form>
+    </div>
+
     <div class="navBar">
       <div class="logo"><img src="/images/logo.png" alt="" /></div>
       <div class="navigation">
@@ -22,6 +31,7 @@
               <h3 id="userName"></h3>
             </div>
             <hr />
+            <button id="adminButton" class="adminButton hide">Admin</button>
 
             <a href="" class="subMenuLink" id="editProfileLink">
               <img src="/images/edit.png" alt="" />

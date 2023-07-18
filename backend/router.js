@@ -1,5 +1,5 @@
 const express = require("express");
-const { fetchProductPage, getSingleProduct, registerNewUser, getUsers, logIn, getUsername, updateUser } = require("./requestHandler");
+const { fetchProductPage, getSingleProduct, registerNewUser, getUsers, logIn, getUsername, updateUser, updateProduct, createOrder } = require("./requestHandler");
 const path = require("path");
 
 const router = express.Router();
@@ -11,6 +11,8 @@ router.post("/api/newuser", registerNewUser);
 router.post("/api/login", logIn);
 router.get("/api/getUsername", getUsername);
 router.put("/api/updateUser", updateUser);
+router.put("/api/updateProduct", updateProduct);
+router.post("/api/orderItem", createOrder);
 
 //This is used for loading html based on the URL
 router.use(express.static(path.join(__dirname, "../public")));

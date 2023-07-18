@@ -2,6 +2,22 @@ const baseUrl = "http://localhost:8080";
 const token = sessionStorage.getItem("token");
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("productId");
+const isAdmin = sessionStorage.getItem("isAdmin");
+const adminButton = document.getElementById("adminButton");
+
+if (isAdmin === "1") {
+  adminButton.classList.remove("hide"); // Show the button
+  adminButton.addEventListener("click", () => {
+    location.href = `${baseUrl}/admin`;
+  });
+} else if (isAdmin === "false") {
+  adminButton.classList.add("hide"); // Hide the button
+}
+
+//Purchase
+document.getElementById("buyButton").addEventListener("click", () => {
+  document.getElementById("orderDiv").classList.remove("hide");
+});
 
 //Click to get dropdown profile
 const profileBar = document.getElementById("profileBar");
@@ -23,6 +39,7 @@ editProfileLink.addEventListener("click", (event) => {
 //Log out
 const logout = () => {
   sessionStorage.removeItem("token");
+  sessionStorage.removeItem("isAdmin");
   location.reload();
 };
 
@@ -125,6 +142,76 @@ const loadProfileTab = () => {
     document.getElementById("userName").innerHTML = "Sign In";
   }
 };
+//Create order
+const createOrder = async (productId, userFullName, homeAddress, postalCode) => {
+  try {
+    const address = `${baseUrl}/api/orderItem`;
+    const request = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        productId: productId,
+        userFullName: userFullName,
+        address: homeAddress,
+        postalCode: postalCode,
+      }),
+    };
 
+    const response = await fetch(address, request);
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    alert(data.message);
+  } catch (error) {
+    console.error(`Failed to create order: ${error}`);
+  }
+};
+
+const handleOrderSubmit = (event) => {
+  event.preventDefault();
+
+  const userFullName = document.getElementById("fullName").value;
+  const address = document.getElementById("address").value;
+  const postalCode = document.getElementById("post").value;
+
+  createOrder(productId, userFullName, address, postalCode);
+
+  document.getElementById("orderDiv").classList.add("hide");
+};
+
+const orderForm = document.getElementById("orderForm");
+orderForm.addEventListener("submit", handleOrderSubmit);
+
+//Get data if possible
+const getUsername = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/api/getUsername`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+
+    const fullName = data.name + " " + data.surname;
+    document.getElementById("fullName").value = fullName;
+    document.getElementById("address").value = data.address;
+    document.getElementById("post").value = data.post;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+};
+
+getUsername();
 loadProfileTab();
 loadPage();

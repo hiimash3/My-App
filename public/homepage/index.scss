@@ -16,6 +16,16 @@ html {
     font-family: greycliff;
   }
 }
+.adminButton {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
 .sticky {
   position: fixed;
   top: 0;
@@ -80,12 +90,10 @@ html {
         cursor: pointer;
         .profileName {
           margin: 0;
-        
         }
         &:hover {
           background: $hoverGray;
         }
-        
       }
     }
 
@@ -127,7 +135,7 @@ html {
               transform: translateX(5px);
             }
             p {
-              font-weight: 600;
+              font-weight: 500;
             }
           }
         }
@@ -148,7 +156,7 @@ html {
       }
     }
     .openMenu {
-      max-height: 400px;
+      max-height: 500px;
     }
   }
 }
@@ -168,7 +176,7 @@ html {
   align-items: center;
   .slider {
     margin-top: 50px;
-    width: 600px;
+    width: 500px;
     height: 300px;
     overflow: hidden;
     .slides {
@@ -203,13 +211,13 @@ html {
       width: 20%;
       transition: 2s;
       img {
-        width: 600px;
+        width: 500px;
         height: 300px;
       }
     }
     .slideManualNav {
       position: absolute;
-      width: 600px;
+      width: 500px;
       margin-top: -40px;
       display: flex;
       justify-content: center;
@@ -233,7 +241,7 @@ html {
 .slideAutoNav {
   position: absolute;
   display: flex;
-  width: 600px;
+  width: 500px;
   justify-content: center;
   margin-top: 260px;
   div {
@@ -269,10 +277,12 @@ html {
   justify-content: center;
   color: $fPTextColor;
   .sProductDiv {
+    border: 4px solid $fPGray;
     box-sizing: border-box;
+    padding: 0px;
     height: 400px;
+    background: $hoverGray;
     &:hover {
-      background: $hoverGray;
       border: 5px solid $mainBlue;
     }
   }
@@ -285,15 +295,17 @@ html {
     cursor: pointer;
 
     img {
-      width: 100%;
-      height: 40%;
+      margin-top: 20px;
+      width: 80%;
+      height: 50%;
     }
 
     .description {
       height: 60%;
       width: 100%;
       margin: 0;
-      padding: 0;
+      padding: 10px;
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       align-items: start;

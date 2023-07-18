@@ -26,7 +26,9 @@ function callbackOnLogin(event) {
     })
     .then((data) => {
       const token = data.token;
+      const isAdmin = data.isAdmin;
       sessionStorage.setItem("token", token);
+      sessionStorage.setItem("isAdmin", isAdmin);
       window.location.href = `${baseUrl}/home?category=all`;
     })
     .catch((error) => {

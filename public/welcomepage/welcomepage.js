@@ -13,6 +13,7 @@ window.addEventListener("scroll", () => {
 const guestButton = document.getElementById("guest");
 guestButton.addEventListener("click", () => {
   sessionStorage.removeItem("token");
+  sessionStorage.removeItem("isAdmin");
   location.href = "http://localhost:8080/home?category=all";
 });
 

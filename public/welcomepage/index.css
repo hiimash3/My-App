@@ -94,17 +94,15 @@ html body {
 .arrowDiv {
   text-align: center;
   color: #fff;
-  position: relative;
-  top: 65%;
-  font-size: 30px;
   position: absolute;
+  top: 90%;
   left: 50%;
-  margin-left: -33%;
-  top: 80%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
 }
 .arrowDiv .arrow {
   margin-top: 10px;
-  width: 8%;
+  width: 10%;
   animation: pulsingArrow 1.5s linear infinite;
 }
 
@@ -169,6 +167,7 @@ button:hover span {
 }
 #about .about-us div img {
   width: 80%;
+  height: 80%;
   border-radius: 25px;
 }
 #about h1 {
